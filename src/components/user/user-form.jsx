@@ -49,7 +49,7 @@ export default function UserForm({ onUserAdded }) {
 
 	return (
 		<form
-			className="border  px-5 py-8  min-w-3xs flex flex-col gap-3 rounded-2xl   shadow-lg overflow-clip shadow-slate-200  border-gray-800/10"
+			className="border  px-5 py-8  min-w-3xs flex flex-col gap-3 rounded-2xl shadow-lg overflow-clip shadow-slate-200  border-gray-800/10"
 			onSubmit={handleSubmit}
 		>
 			<div className="mb-5">
@@ -61,7 +61,7 @@ export default function UserForm({ onUserAdded }) {
 			<div className="flex items-center gap-5 w-full">
 				<input
 					type="text"
-					className="border border-slate-500 w-full outline-blue-500 rounded-md p-1 font-sans"
+					className="border border-slate-300 w-full outline-blue-500 rounded-md p-3 font-sans"
 					placeholder="Firstname"
 					value={user.firstName}
 					onChange={(event) =>
@@ -73,7 +73,7 @@ export default function UserForm({ onUserAdded }) {
 				/>
 				<input
 					type="text"
-					className="border border-slate-500 w-full outline-blue-500 rounded-md p-1 font-sans"
+					className="border border-slate-300 w-full outline-blue-500 rounded-md p-3 font-sans"
 					placeholder="Lastname"
 					value={user.lastName}
 					onChange={(event) =>
@@ -87,7 +87,7 @@ export default function UserForm({ onUserAdded }) {
 
 			<input
 				type="email"
-				className="border border-slate-500 w-full outline-blue-500 rounded-md p-1 font-sans"
+				className="border border-slate-300 w-full outline-blue-500 rounded-md p-3 font-sans"
 				placeholder="Email"
 				value={user.email}
 				onChange={(event) =>
@@ -99,7 +99,7 @@ export default function UserForm({ onUserAdded }) {
 			/>
 			<input
 				type="tel"
-				className="border border-slate-500 w-full outline-blue-500 rounded-md p-1 font-sans"
+				className="border border-slate-300 w-full outline-blue-500 rounded-md p-3 font-sans"
 				placeholder="Phone number"
 				value={user.phone}
 				onChange={(event) =>
@@ -113,7 +113,7 @@ export default function UserForm({ onUserAdded }) {
 				Date of Birth
 				<input
 					type="date"
-					className="border border-slate-500 w-full outline-blue-500 rounded-md p-1 font-sans"
+					className="border border-slate-300 w-full outline-blue-500 rounded-md p-3 font-sans"
 					value={user.dob}
 					onChange={(event) =>
 						setUser({
