@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { BASE_URL } from '../../lib/utils';
 
-export default function UserForm() {
+export default function UserForm({ onUserAdded }) {
 	// controlled forms
 
 	const [user, setUser] = useState({
@@ -16,8 +16,6 @@ export default function UserForm() {
 	// logic for submitting the data collected from the forms
 	function handleSubmit(event) {
 		event.preventDefault();
-
-		// fetch request (POST)
 
 		fetch(`${BASE_URL}/users`, {
 			method: 'POST',
@@ -36,7 +34,6 @@ export default function UserForm() {
 			})
 			.then((data) => {
 				console.log(data);
-
 				setUser({
 					firstName: '',
 					lastName: '',
@@ -44,13 +41,15 @@ export default function UserForm() {
 					phone: '',
 					dob: '',
 				});
+
+				onUserAdded();
 			})
 			.catch((error) => console.error(error));
 	}
 
 	return (
 		<form
-			className="border border-slate-300 px-5 py-8 rounded-lg min-w-3xs flex flex-col gap-3"
+			className="border  px-5 py-8  min-w-3xs flex flex-col gap-3 rounded-2xl   shadow-lg overflow-clip shadow-slate-200  border-gray-800/10"
 			onSubmit={handleSubmit}
 		>
 			<div className="mb-5">
