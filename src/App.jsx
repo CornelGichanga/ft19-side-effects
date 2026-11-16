@@ -1,28 +1,41 @@
 import { useEffect, useState } from 'react';
-import ProductCard from './components/product-card';
-
-const BASE_URL = 'https://fakestoreapi.com';
+import UserForm from './components/user/user-form';
+import { BASE_URL } from './lib/utils';
 
 function App() {
-	// fetch data using useEffect hook
-
-	const [products, setProducts] = useState([]);
+	const [users, setUsers] = useState([]);
 
 	useEffect(() => {
-		// fetch from https://fakestoreapi.com/products
-		// default behaviour of fetch is GET
+		const controller = new AbortController();
 
-		fetch(`${BASE_URL}/products`)
-			.then((res) => res.json())
-			.then((data) => setProducts(data));
+		fetch(`${BASE_URL}/users`, {
+			signal: controller.signal,
+		})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error('Fetching users failed');
+				}
+
+				return response.json();
+			})
+			.then((data) => setUsers(data))
+			.catch((error) => console.error(error));
+
+		// cleanup
+		return () => controller.abort();
 	}, []);
 
 	return (
 		<div className="h-screen p-5">
-			<div className="grid grid-cols-2 xl:grid-cols-4 gap-5">
-				{products.map((product) => (
-					<ProductCard {...product} key={product.id} />
-				))}
+			<div className="grid grid-cols-5 gap-5">
+				<div className="col-span-2">
+					<UserForm />
+				</div>
+				<div className="col-span-3">
+					<h1 className="text-5xl font-barlow font-bold">Users</h1>
+
+					<div className="">{JSON.stringify(users)}</div>
+				</div>
 			</div>
 		</div>
 	);
